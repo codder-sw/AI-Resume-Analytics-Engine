@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+python-multipart
+pdfplumber
+python-docx
+pytesseract
+pdf2image
+opencv-python-headless
+spacy
+motor
+pydantic-settings
+slowapi
+python-dotenv
+groq
