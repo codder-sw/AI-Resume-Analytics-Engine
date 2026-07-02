@@ -23,13 +23,15 @@ dist-ssr
 *.sln
 *.sw?
 
-# Environment variables — KABHI PUSH MAT KARO
+# Environment files — KABHI PUSH MAT KARO
 .env
 .env.local
 .env.production
+backend/.env
+backend/.env.local
 
 # Python
 backend/venv/
 backend/__pycache__/
 backend/**/__pycache__/
-backend/*.pyc
+*.pyc
