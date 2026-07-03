@@ -1,8 +1,8 @@
 # 🚀 AI Resume Analytics Engine
 
-An AI-powered full-stack resume analysis platform that evaluates resumes, compares them with job descriptions, generates ATS-style scores, identifies skill gaps, and provides personalized career improvement recommendations using Generative AI.
+An AI-powered full-stack resume analysis platform that evaluates resumes, compares them with job descriptions, generates ATS-style scores, identifies skill gaps, and provides personalized career improvement recommendations using Large Language Models (LLMs).
 
-> Built using **React**, **TypeScript**, **FastAPI**, **MongoDB Atlas**, and **Google Gemini API**.
+Built with **React**, **TypeScript**, **FastAPI**, **MongoDB Atlas**, and **Groq API**.
 
 ---
 
@@ -20,11 +20,11 @@ An AI-powered full-stack resume analysis platform that evaluates resumes, compar
 
 # 📖 Overview
 
-Recruiters receive thousands of resumes every day, while candidates often struggle to understand why their resumes are rejected.
+AI Resume Analytics Engine is a full-stack web application that helps job seekers evaluate and improve their resumes using Artificial Intelligence.
 
-AI Resume Analytics Engine bridges this gap by using Generative AI to analyze resumes, compare them with job descriptions, identify missing skills, and provide actionable recommendations to improve interview readiness.
+Users can upload a PDF resume along with a target job description. The application analyzes the resume using an LLM through the Groq API and provides structured feedback, including resume quality, ATS-style scoring, skill matching, missing skills, and actionable improvement suggestions.
 
-The project demonstrates the integration of modern full-stack development with Large Language Models (LLMs) to solve a real-world problem.
+This project demonstrates how modern AI can be integrated into real-world software engineering workflows using scalable backend architecture, cloud databases, and REST APIs.
 
 ---
 
@@ -32,17 +32,17 @@ The project demonstrates the integration of modern full-stack development with L
 
 - 📄 Upload Resume (PDF)
 - 🤖 AI-powered Resume Analysis
-- 📊 ATS-style Resume Scoring
+- 📊 ATS-style Resume Evaluation
 - 🎯 Job Description Matching
 - 🧠 Skill Gap Identification
-- 💡 Personalized Improvement Suggestions
-- ☁️ Cloud Database Integration
-- ⚡ Fast REST APIs
-- 📱 Responsive User Interface
+- 💡 Personalized Resume Improvement Suggestions
+- ☁️ MongoDB Atlas Cloud Database
+- ⚡ Fast REST API built with FastAPI
+- 📱 Responsive React Frontend
 
 ---
 
-# 🏗️ Tech Stack
+# 🛠️ Tech Stack
 
 ## Frontend
 
@@ -51,28 +51,21 @@ The project demonstrates the integration of modern full-stack development with L
 - Vite
 - CSS
 
----
-
 ## Backend
 
 - Python
 - FastAPI
-- REST API
-
----
+- REST APIs
 
 ## AI
 
-- Google Gemini API
+- Groq API
+- Llama 3.x Language Model
 - Prompt Engineering
-
----
 
 ## Database
 
 - MongoDB Atlas
-
----
 
 ## Tools
 
@@ -82,24 +75,24 @@ The project demonstrates the integration of modern full-stack development with L
 
 ---
 
-# 🏛️ System Architecture
+# 🏗️ System Architecture
 
-```
-                   User
-                     │
-                     ▼
-          React + TypeScript
-                     │
-                     ▼
-          services/api.ts
-                     │
-                     ▼
-             FastAPI Backend
-                     │
-      ┌──────────────┴──────────────┐
-      │                             │
-      ▼                             ▼
- Resume Processing          Gemini API
+```text
+                 User
+                   │
+                   ▼
+      React + TypeScript Frontend
+                   │
+                   ▼
+         API Service Layer (api.ts)
+                   │
+                   ▼
+            FastAPI Backend
+                   │
+      ┌────────────┴────────────┐
+      │                         │
+      ▼                         ▼
+ Resume Text Processing      Groq API (LLM)
       │
       ▼
  MongoDB Atlas
@@ -114,95 +107,81 @@ The project demonstrates the integration of modern full-stack development with L
 User uploads
 
 - Resume (PDF)
-- Name
+- Candidate Name
 - Job Description
 
 ↓
 
 ### Step 2
 
-Frontend creates
-
-```
-FormData
-```
+Frontend packages the data using `FormData`.
 
 ↓
 
 ### Step 3
 
-FastAPI receives
-
-```
-POST /analyze
-```
+A POST request is sent to the FastAPI backend.
 
 ↓
 
 ### Step 4
 
-Backend extracts resume text
+Backend extracts text from the uploaded resume.
 
 ↓
 
 ### Step 5
 
-Resume + Job Description
-
-↓
-
-Sent to Gemini API
+Resume content and job description are sent to the Groq API.
 
 ↓
 
 ### Step 6
 
-Gemini analyzes
+The LLM analyzes
 
-- Resume Quality
-- ATS Score
-- Skills
-- Missing Skills
-- Suggestions
+- Resume quality
+- ATS compatibility
+- Skill matching
+- Missing skills
+- Resume weaknesses
+- Improvement suggestions
 
 ↓
 
 ### Step 7
 
-Analysis stored in MongoDB Atlas
+Analysis is stored in MongoDB Atlas.
 
 ↓
 
 ### Step 8
 
-Results returned to frontend
-
-↓
-
-User receives AI-generated insights.
+Results are returned to the frontend and displayed to the user.
 
 ---
 
 # 📁 Project Structure
 
 ```
-AI-Resume-Analytics-Engine/
-
+AI-Resume-Analytics-Engine
 │
-├── backend/
-│   ├── app/
-│   ├── routes/
-│   ├── services/
-│   ├── models/
+├── backend
+│   ├── app
+│   ├── routes
+│   ├── services
+│   ├── models
+│   ├── database
 │   └── main.py
 │
-├── public/
+├── public
 │
-├── src/
-│   ├── components/
-│   ├── services/
+├── src
+│   ├── components
+│   ├── pages
+│   ├── services
 │   │     └── api.ts
-│   ├── types/
+│   ├── types
 │   ├── App.tsx
 │   └── main.tsx
 │
@@ -226,7 +205,7 @@ cd AI-Resume-Analytics-Engine
 
 ---
 
-## Frontend
+## Frontend Setup
 
 Install dependencies
 
@@ -234,7 +213,7 @@ Install dependencies
 npm install
 ```
 
-Run
+Run development server
 
 ```bash
 npm run dev
@@ -242,21 +221,21 @@ npm run dev
 
 ---
 
-## Backend
+## Backend Setup
 
-Navigate
+Navigate to backend
 
 ```bash
 cd backend
 ```
 
-Install
+Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run
+Run FastAPI server
 
 ```bash
 uvicorn main:app --reload
@@ -266,37 +245,25 @@ uvicorn main:app --reload
 
 # 🔑 Environment Variables
 
-## Frontend
+## Frontend (.env)
 
-Create
-
-```
-.env
-```
-
-```
+```env
 VITE_API_URL=http://localhost:8000
 ```
 
 ---
 
-## Backend
+## Backend (.env)
 
-Create
-
-```
-.env
-```
-
-```
+```env
 MONGO_URI=your_mongodb_connection_string
 
-GEMINI_API_KEY=your_google_gemini_api_key
+GROQ_API_KEY=your_groq_api_key
 ```
 
 ---
 
-# 📊 API Endpoint
+# 📡 API Endpoint
 
 ## Analyze Resume
 
@@ -310,64 +277,63 @@ POST /analyze
 multipart/form-data
 ```
 
-Parameters
-
-| Field | Type |
-|--------|------|
+| Parameter | Type |
+|-----------|------|
 | resume | PDF |
 | name | String |
 | jobDescription | String |
 
 ---
 
-### Response
-
-Example
+### Example Response
 
 ```json
 {
-  "overallScore": 88,
+  "overallScore": 87,
   "skillMatch": 91,
   "missingSkills": [
     "Docker",
     "AWS"
   ],
+  "strengths": [
+    "Strong project experience",
+    "Good technical skills"
+  ],
   "suggestions": [
-    "Add cloud deployment projects",
-    "Highlight measurable achievements"
+    "Include measurable project impact",
+    "Add cloud deployment experience"
   ]
 }
 ```
 
 ---
 
-# 💡 Why This Project?
+# 💡 Key Engineering Concepts
 
-This project demonstrates practical implementation of:
+This project demonstrates practical implementation of
 
 - Full Stack Development
 - REST API Design
+- Frontend-Backend Communication
 - Cloud Database Integration
-- AI Application Development
+- AI-powered Resume Analysis
 - Prompt Engineering
 - LLM Integration
-- Resume Parsing Workflow
+- Environment Variable Management
 - Modern Software Architecture
 
 ---
 
-# 🚀 Future Improvements
+# 📈 Future Roadmap
 
 - User Authentication
-- Resume History
+- Resume History Dashboard
 - Resume Version Comparison
-- Multiple Resume Support
-- AI Chat Assistant
+- Resume PDF Report Export
 - Cover Letter Generator
 - Interview Question Generator
-- Resume Keyword Optimization
-- PDF Report Download
-- Multi-language Support
+- Resume Keyword Optimizer
+- Multiple Resume Support
 - Docker Deployment
 - CI/CD Pipeline
 - RAG-based Resume Analysis
@@ -375,26 +341,29 @@ This project demonstrates practical implementation of:
 
 ---
 
-# 📚 Learning Outcomes
+# 📚 What I Learned
 
-Through this project, I gained practical experience in:
+Through this project I gained practical experience in
 
 - Building scalable full-stack applications
-- Designing REST APIs
-- Integrating Generative AI into real-world applications
+- Designing REST APIs using FastAPI
+- Integrating Large Language Models through Groq API
 - Working with MongoDB Atlas
 - Prompt Engineering
-- Frontend-Backend Communication
-- Environment Variable Management
+- File Upload Handling
 - Cloud Deployment
+- Environment Variable Management
+- Frontend and Backend Integration
 
 ---
 
 # 🙏 Acknowledgement
 
-This project was developed as a learning-focused implementation.
+This project was built as a learning-focused implementation.
 
-I took inspiration and architectural reference from an open-source project to understand the overall workflow and system design. After studying the architecture, I recreated and implemented the application independently, including the frontend, backend integration, database setup, API communication, deployment, and AI workflow while using AI-assisted development tools to deepen my understanding of the technologies involved.
+I took architectural inspiration from an existing open-source project to understand the overall workflow and system design. After studying the architecture, I independently recreated the application, implementing the frontend, backend integration, database connectivity, deployment, and AI workflow while using AI-assisted development tools to deepen my understanding of the technologies involved.
+
+The objective of this project was to strengthen my understanding of full-stack development and practical AI integration through hands-on implementation.
 
 ---
 
@@ -404,7 +373,7 @@ I took inspiration and architectural reference from an open-source project to un
 
 📧 shivamwaghule2005@gmail.com
 
-🔗 LinkedIn
+💼 LinkedIn
 
 https://linkedin.com/in/shivam-waghule
 
@@ -414,6 +383,14 @@ https://github.com/codder-sw
 
 ---
 
-## ⭐ Support
+# ⭐ Support
 
-If you found this project helpful, consider giving it a ⭐ on GitHub!
+If you found this project useful, please consider giving it a ⭐ on GitHub.
+
+Feedback, suggestions, and contributions are always welcome!
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
