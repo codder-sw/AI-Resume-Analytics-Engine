@@ -1,75 +1,419 @@
-# React + TypeScript + Vite
+# 🚀 AI Resume Analytics Engine
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An AI-powered full-stack resume analysis platform that evaluates resumes, compares them with job descriptions, generates ATS-style scores, identifies skill gaps, and provides personalized career improvement recommendations using Generative AI.
 
-Currently, two official plugins are available:
+> Built using **React**, **TypeScript**, **FastAPI**, **MongoDB Atlas**, and **Google Gemini API**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🌐 Live Demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🔗 https://agent-6a454a7295ab546345b22f3f--ai-resume0.netlify.app/
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📂 GitHub Repository
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+🔗 https://github.com/codder-sw/AI-Resume-Analytics-Engine
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# 📖 Overview
+
+Recruiters receive thousands of resumes every day, while candidates often struggle to understand why their resumes are rejected.
+
+AI Resume Analytics Engine bridges this gap by using Generative AI to analyze resumes, compare them with job descriptions, identify missing skills, and provide actionable recommendations to improve interview readiness.
+
+The project demonstrates the integration of modern full-stack development with Large Language Models (LLMs) to solve a real-world problem.
+
+---
+
+# ✨ Features
+
+- 📄 Upload Resume (PDF)
+- 🤖 AI-powered Resume Analysis
+- 📊 ATS-style Resume Scoring
+- 🎯 Job Description Matching
+- 🧠 Skill Gap Identification
+- 💡 Personalized Improvement Suggestions
+- ☁️ Cloud Database Integration
+- ⚡ Fast REST APIs
+- 📱 Responsive User Interface
+
+---
+
+# 🏗️ Tech Stack
+
+## Frontend
+
+- React
+- TypeScript
+- Vite
+- CSS
+
+---
+
+## Backend
+
+- Python
+- FastAPI
+- REST API
+
+---
+
+## AI
+
+- Google Gemini API
+- Prompt Engineering
+
+---
+
+## Database
+
+- MongoDB Atlas
+
+---
+
+## Tools
+
+- Git
+- GitHub
+- Netlify
+
+---
+
+# 🏛️ System Architecture
 
 ```
+                   User
+                     │
+                     ▼
+          React + TypeScript
+                     │
+                     ▼
+          services/api.ts
+                     │
+                     ▼
+             FastAPI Backend
+                     │
+      ┌──────────────┴──────────────┐
+      │                             │
+      ▼                             ▼
+ Resume Processing          Gemini API
+      │
+      ▼
+ MongoDB Atlas
+```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+# 🔄 Application Workflow
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Step 1
+
+User uploads
+
+- Resume (PDF)
+- Name
+- Job Description
+
+↓
+
+### Step 2
+
+Frontend creates
 
 ```
+FormData
+```
+
+↓
+
+### Step 3
+
+FastAPI receives
+
+```
+POST /analyze
+```
+
+↓
+
+### Step 4
+
+Backend extracts resume text
+
+↓
+
+### Step 5
+
+Resume + Job Description
+
+↓
+
+Sent to Gemini API
+
+↓
+
+### Step 6
+
+Gemini analyzes
+
+- Resume Quality
+- ATS Score
+- Skills
+- Missing Skills
+- Suggestions
+
+↓
+
+### Step 7
+
+Analysis stored in MongoDB Atlas
+
+↓
+
+### Step 8
+
+Results returned to frontend
+
+↓
+
+User receives AI-generated insights.
+
+---
+
+# 📁 Project Structure
+
+```
+AI-Resume-Analytics-Engine/
+
+│
+├── backend/
+│   ├── app/
+│   ├── routes/
+│   ├── services/
+│   ├── models/
+│   └── main.py
+│
+├── public/
+│
+├── src/
+│   ├── components/
+│   ├── services/
+│   │     └── api.ts
+│   ├── types/
+│   ├── App.tsx
+│   └── main.tsx
+│
+├── .env.example
+├── package.json
+├── vite.config.ts
+└── README.md
+```
+
+---
+
+# ⚙️ Installation
+
+## Clone Repository
+
+```bash
+git clone https://github.com/codder-sw/AI-Resume-Analytics-Engine.git
+
+cd AI-Resume-Analytics-Engine
+```
+
+---
+
+## Frontend
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Run
+
+```bash
+npm run dev
+```
+
+---
+
+## Backend
+
+Navigate
+
+```bash
+cd backend
+```
+
+Install
+
+```bash
+pip install -r requirements.txt
+```
+
+Run
+
+```bash
+uvicorn main:app --reload
+```
+
+---
+
+# 🔑 Environment Variables
+
+## Frontend
+
+Create
+
+```
+.env
+```
+
+```
+VITE_API_URL=http://localhost:8000
+```
+
+---
+
+## Backend
+
+Create
+
+```
+.env
+```
+
+```
+MONGO_URI=your_mongodb_connection_string
+
+GEMINI_API_KEY=your_google_gemini_api_key
+```
+
+---
+
+# 📊 API Endpoint
+
+## Analyze Resume
+
+```
+POST /analyze
+```
+
+### Request
+
+```
+multipart/form-data
+```
+
+Parameters
+
+| Field | Type |
+|--------|------|
+| resume | PDF |
+| name | String |
+| jobDescription | String |
+
+---
+
+### Response
+
+Example
+
+```json
+{
+  "overallScore": 88,
+  "skillMatch": 91,
+  "missingSkills": [
+    "Docker",
+    "AWS"
+  ],
+  "suggestions": [
+    "Add cloud deployment projects",
+    "Highlight measurable achievements"
+  ]
+}
+```
+
+---
+
+# 💡 Why This Project?
+
+This project demonstrates practical implementation of:
+
+- Full Stack Development
+- REST API Design
+- Cloud Database Integration
+- AI Application Development
+- Prompt Engineering
+- LLM Integration
+- Resume Parsing Workflow
+- Modern Software Architecture
+
+---
+
+# 🚀 Future Improvements
+
+- User Authentication
+- Resume History
+- Resume Version Comparison
+- Multiple Resume Support
+- AI Chat Assistant
+- Cover Letter Generator
+- Interview Question Generator
+- Resume Keyword Optimization
+- PDF Report Download
+- Multi-language Support
+- Docker Deployment
+- CI/CD Pipeline
+- RAG-based Resume Analysis
+- Vector Database Integration
+
+---
+
+# 📚 Learning Outcomes
+
+Through this project, I gained practical experience in:
+
+- Building scalable full-stack applications
+- Designing REST APIs
+- Integrating Generative AI into real-world applications
+- Working with MongoDB Atlas
+- Prompt Engineering
+- Frontend-Backend Communication
+- Environment Variable Management
+- Cloud Deployment
+
+---
+
+# 🙏 Acknowledgement
+
+This project was developed as a learning-focused implementation.
+
+I took inspiration and architectural reference from an open-source project to understand the overall workflow and system design. After studying the architecture, I recreated and implemented the application independently, including the frontend, backend integration, database setup, API communication, deployment, and AI workflow while using AI-assisted development tools to deepen my understanding of the technologies involved.
+
+---
+
+# 👨‍💻 Author
+
+**Shivam Waghule**
+
+📧 shivamwaghule2005@gmail.com
+
+🔗 LinkedIn
+
+https://linkedin.com/in/shivam-waghule
+
+🐙 GitHub
+
+https://github.com/codder-sw
+
+---
+
+## ⭐ Support
+
+If you found this project helpful, consider giving it a ⭐ on GitHub!
